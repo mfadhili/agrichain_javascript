@@ -1,0 +1,123 @@
+root@ubuntu-s-4vcpu-8gb-amd-sfo3-01:~# history
+    1  ls
+    2  sudo apt update
+    3  sudo apt update
+    4  sudo apt upgrade
+    5  git --version
+    6  git config --global user.name "mfadhili"
+    7  git config --global user.email "mfadhili@github.com"
+    8  git config list
+    9  git config --list
+   10  sudo apt install apt-transport-https ca-certificates curl software-properties-common
+   11  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   12  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+   13  apt-cache policy docker-ce
+   14  sudo apt install docker-ce
+   15  groups
+   16  docker-compose --version
+   17  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+   18  sudo chmod +x /usr/local/bin/docker-compose
+   19  docker-compose --version
+   20  curl -sSL https://bit.ly/2ysbOFE | bash -s
+   21  ls
+   22  which peer
+   23  ll fabric-samples/
+   24  cd fabric-samples/
+   25  pwd
+   26  sudo vim ~/.profile
+   27  sudo vim ~/.bashrc
+   28  source ~/.bashrc
+   29  which peer
+   30  cd test-network
+   31  ls
+   32  ./network.sh down
+   33  sudo systemctl status docker
+   34  sudo usermod -aG docker ${USER}
+   35  su - ${USER}
+   36  ll
+   37  mkdir agnt
+   38  cd agnt/
+   39  git clone
+   40  git clone https://github.com/mfadhili/agrichain_javascript.git
+   41  ll
+   42  cd agrichain_javascript/
+   43  git merge -b origin/contracts
+   44  git merge  origin/contracts
+   45  cat lib/produceTransfer.js
+   46  ll
+   47  npm -i
+   48  cd ~
+   49  curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
+   50  sudo bash nodesource_setup.sh
+   51  sudo apt install nodejs
+   52  node -v
+   53  cd agnt/agrichain_javascript/
+   54  ll
+   55  npm install
+   56  pwd
+   57  cd fabric-samples/test-network
+   58  ll
+   59  ./network.sh down
+   60  ./network.sh up
+   61  ./network.sh createChannel
+   62  export FABRIC_CFG_PATH=$PWD/../config/
+   63  export CORE_PEER_TLS_ENABLED=true
+   64  export CORE_PEER_LOCALMSPID="Org1MSP"
+   65  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+   66  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+   67  export CORE_PEER_ADDRESS=localhost:7051
+   68  export PATH=${PWD}/../bin:$PATH
+   69  peer version
+   70  peer lifecycle chaincode package agri.tar.gz --path /root/agnt/agrichain_javascript --lang node --label agri_1.0
+   71  ll
+   72  peer lifecycle chaincode install agri.tar.gz
+   73  export CORE_PEER_LOCALMSPID="Org2MSP"
+   74  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
+   75  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+   76  export CORE_PEER_ADDRESS=localhost:9051
+   77  peer lifecycle chaincode install agri.tar.gz
+   78  peer lifecycle chaincode queryinstalled
+   79  Package ID: agri_1.0:bbd0351d2084a662f3ac995087bd795ad378683c54e2c39b32c5c7a64013ad3d, Label: agri_1.0
+   80  export CC_PACKAGE_ID=agri_1.0:a241469a067241d64166809ce70784fa6a803e609b76bd956917647b6205dc58
+   81  peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name agri --version 1.0 --package-id $CC_PACKAGE_ID --sequence 1 --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
+   82  export CORE_PEER_LOCALMSPID="Org1MSP"
+   83  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+   84  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+   85  export CORE_PEER_ADDRESS=localhost:7051
+   86  peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name agri --version 1.0 --package-id $CC_PACKAGE_ID --sequence 1 --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
+   87  peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name agri --version 1.0 --sequence 1 --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" --output json
+   88  peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --channelID mychannel --name agri --version 1.0 --sequence 1 --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" --peerAddresses localhost:7051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt" --peerAddresses localhost:9051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
+   89  peer lifecycle chaincode querycommitted --channelID mychannel --name agri --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
+   90  peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n agri --peerAddresses localhost:7051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt" --peerAddresses localhost:9051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt" -c '{"function":"InitLedger","Args":[]}'
+   peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n agri --peerAddresses localhost:7051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt" --peerAddresses localhost:9051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt" -c '{"function":"GetProduceHistory","Args":["P0003"]}'
+      peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n agri --peerAddresses localhost:7051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt" --peerAddresses localhost:9051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt" -c '{"function":"UpdateProduce","Args":["P0003","Maple","JULY-23","Mfadhili","3"]}'
+   91  cd fabric-samples/test-network
+   92  export FABRIC_CFG_PATH=$PWD/../config/
+   93  export PATH=${PWD}/../bin:$PATH
+   94  export FABRIC_CFG_PATH=$PWD/../config/
+   95  export PATH=${PWD}/../bin:$PATH
+   96  export CORE_PEER_LOCALMSPID="Org1MSP"
+   97  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+   98  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+   99  export CORE_PEER_ADDRESS=localhost:7051
+  100  export CORE_PEER_LOCALMSPID="Org2MSP"
+  101  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
+  102  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+  103  export CORE_PEER_ADDRESS=localhost:9051
+  104  export CORE_PEER_TLS_ENABLED=true
+  105  export CORE_PEER_LOCALMSPID="Org1MSP"
+  106  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+  107  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+  108  export CORE_PEER_ADDRESS=localhost:7051
+  109  export CORE_PEER_TLS_ENABLED=true
+  110  export CORE_PEER_LOCALMSPID="Org1MSP"
+  111  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+  112  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+  113  export CORE_PEER_ADDRESS=localhost:7051
+  114  peer chaincode query -C mychannel -n agri -c '{"Args":["GetAllProduce"]}'
+  115  systemctl status sshd
+  116  systemctl restart sshd
+  117  history
+root@ubuntu-s-4vcpu-8gb-amd-sfo3-01:~# exit
+logout
+Connection to 146.190.157.221 closed.
